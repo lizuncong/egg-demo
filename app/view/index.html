@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+    <div>首页内容</div>
+    <img src="/public/img/2.jpg" alt="">
+    <div>id：<%= res.id %></div>
+    <div>name：<%= res.name %></div>
+    <ul>
+        <% for(var i = 0; i< list.length; i++){%>
+            <li><%= list[i]%></li>
+        <%}%>
+    </ul>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

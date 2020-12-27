@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root123456",
+    "database": "egg_product",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "egg_product",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
