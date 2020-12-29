@@ -3,7 +3,7 @@ const BaseController = require('./base')
 class Controller extends BaseController{
   constructor(...args){
     super(...args);
-    this.entity = 'user'
+    this.entity = 'resource'
   }
 
 }

@@ -1,29 +1,33 @@
-const { Service } = require('egg')
+const BaseService = require('./base')
 
-function toInt(str) {
-  if (typeof str === 'number') return str;
-  if (!str) return str;
-  return parseInt(str, 10) || 0;
-}
 
-class UserService extends Service{
-  async list(){
-    // await this.app.mysql.query('select * from user')
-    return await this.ctx.model.User.findAll()
+class Service extends BaseService{
+  constructor(...args){
+    super(...args);
+    this.entity = 'users'
   }
 
-  async create(user){
-    return await this.ctx.model.User.create(user)
-  }
-
-  async update(id, params){
-    const {ctx} = this;
-    const user = await ctx.model.User.findByPk(id);
-    if (!user) {
-      return;
+  async list(pageNum, pageSize, where){
+    const list = await this.app.mysql.select(this.entity, {
+      where,
+      order: [['id', 'asc'], ['created_at', 'asc']],
+      offset: (pageNum -1) * pageSize,
+      limit: pageSize
+    })
+    for(let i = 0; i < list.length; i++){
+      const user = list[i];
+      const resources = await this.app.mysql.query(`select resources.* from resources
+        inner join role_resources on resources.id = role_resources.resource_id
+        inner join role_users on role_resources.role_id = role_users.role_id
+        where role_users.user_id = ?`, [ user.id ])
+      user.resources = resources;
     }
-    return await user.update(params);
+    const total = await this.app.mysql.count(this.entity, where)
+    return {
+      list,
+      total
+    }
   }
 }
 
-module.exports = UserService;
+module.exports = Service;
