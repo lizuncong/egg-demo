@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
+  // router.get('/', controller.home.index);
   router.get('/product/list', controller.product.list)
   router.get('/product', controller.product.index)
   router.get('/product/detail', controller.product.detail)
@@ -34,5 +34,5 @@ module.exports = app => {
   /******************************资源相关路由**************************************/
   router.resources('resource', '/api/resource', controller.resource)
 
-
+  router.get('*', controller.serverRender.render)
 };

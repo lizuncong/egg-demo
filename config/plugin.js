@@ -14,3 +14,8 @@ exports.sequelize = {
   enable: true,
   package: 'egg-sequelize',
 };
+
+exports.httpProxy = {
+  enable: true,
+  package: 'egg-http-proxy'
+}

@@ -1,10 +1,13 @@
 /* eslint valid-jsdoc: "off" */
-
+const path = require('path');
 'use strict';
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
+
+const isDev = process.env.NODE_ENV === 'development'
+
 module.exports = appInfo => {
   /**
    * built-in config
@@ -15,9 +18,22 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1608979796654_8395';
 
+
+  if(isDev){
+    console.log('isDev===0000', isDev)
+    config.httpProxy = {
+      '/public': 'http://localhost:8888'
+    }
+  }
   // add your middleware config here
   config.middleware = [];
-
+  // 静态文件路径
+  config.static = {
+    dir: [
+        path.join(appInfo.baseDir, 'app/public'),
+        path.join(appInfo.baseDir, 'dist'),
+    ]
+  }
   //
   config.security = {
     csrf: {

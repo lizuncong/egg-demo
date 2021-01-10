@@ -7,13 +7,27 @@
     "declarations": true
   },
   "dependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "egg": "^2.15.1",
+    "egg-http-proxy": "^1.0.1",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^6.0.0",
     "egg-view-ejs": "^2.0.1",
+    "html-webpack-plugin": "^4.5.1",
+    "memory-fs": "^0.5.0",
     "moment": "^2.29.1",
-    "mysql2": "^2.2.5"
+    "mysql2": "^2.2.5",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -31,7 +45,11 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-demo",
     "stop": "egg-scripts stop --title=egg-server-demo",
-    "dev": "egg-bin dev",
+    "dev:react-client": "cross-env NODE_ENV=development webpack-dev-server --config ./react-ssr/build/webpack.config.client.js",
+    "build:react-client": "webpack --config ./react-ssr/build/webpack.config.client.js",
+    "build:react-server": "webpack --config ./react-ssr/build/webpack.config.server.js",
+    "build:react": "npm run build:react-client && npm run build:react-server",
+    "dev": "cross-env NODE_ENV=development egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
