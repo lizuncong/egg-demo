@@ -6,7 +6,7 @@ const path = require('path');
  * @param {Egg.EggAppInfo} appInfo app info
  */
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = appInfo => {
   /**
@@ -19,34 +19,34 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1608979796654_8395';
 
 
-  if(isDev){
-    console.log('isDev===0000', isDev)
+  if (isDev) {
+    console.log('isDev===0000', isDev);
     config.httpProxy = {
-      '/public': 'http://localhost:8888'
-    }
+      '/public': 'http://localhost:8888',
+    };
   }
   // add your middleware config here
   config.middleware = [];
   // 静态文件路径
   config.static = {
     dir: [
-        path.join(appInfo.baseDir, 'app/public'),
-        path.join(appInfo.baseDir, 'dist'),
-    ]
-  }
+      path.join(appInfo.baseDir, 'app/public'),
+      path.join(appInfo.baseDir, 'dist'),
+    ],
+  };
   //
   config.security = {
     csrf: {
       enable: false,
-    }
-  }
+    },
+  };
 
   // 配置模版引擎
   config.view = {
     mapping: {
-      '.html': 'ejs'
-    }
-  }
+      '.html': 'ejs',
+    },
+  };
 
   config.mysql = {
     // 单数据库信息配置
@@ -73,7 +73,7 @@ module.exports = appInfo => {
     host: '127.0.0.1',
     port: 3306,
     database: 'egg_product',
-    password: "root123456",
+    password: 'root123456',
   };
 
   // add your user config here

@@ -2,8 +2,8 @@
 
 exports.ejs = {
   enable: true,
-  package: 'egg-view-ejs'
-}
+  package: 'egg-view-ejs',
+};
 
 exports.mysql = {
   enable: true,
@@ -17,5 +17,5 @@ exports.sequelize = {
 
 exports.httpProxy = {
   enable: true,
-  package: 'egg-http-proxy'
-}
+  package: 'egg-http-proxy',
+};

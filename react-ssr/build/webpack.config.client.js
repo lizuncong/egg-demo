@@ -6,12 +6,12 @@ const isDev = process.env.NODE_ENV === 'development';
 const config = {
   mode: 'development',
   entry: {
-    app: path.join(__dirname, '../client/index.jsx')
+    app: path.join(__dirname, '../client/index.jsx'),
   },
   output: {
     filename: '[name].[hash].js',
     path: path.join(__dirname, '../../dist'),
-    publicPath: "/public/"
+    publicPath: '/public/',
   },
   module: {
     rules: [
@@ -33,30 +33,30 @@ const config = {
           ],
           plugins: [].filter(Boolean),
         },
-      }
-    ]
+      },
+    ],
   },
   plugins: [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, '../client/template.html')
-      })
-  ]
-}
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '../client/template.html'),
+    }),
+  ],
+};
 
-if(isDev){
+if (isDev) {
   config.devServer = {
     host: '0.0.0.0',
     port: '8888',
     contentBase: path.join(__dirname, '../dist'),
     // hot: true,
     overlay: {
-      errors: true
+      errors: true,
     },
     publicPath: '/public/',
     historyApiFallback: {
-      index: '/public/index.html'
-    }
-  }
+      index: '/public/index.html',
+    },
+  };
 }
 
-module.exports = config
+module.exports = config;

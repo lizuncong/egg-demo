@@ -1,16 +1,16 @@
 const path = require('path');
 
 module.exports = {
-  target: "node",
+  target: 'node',
   mode: 'development',
   entry: {
-    app: path.join(__dirname, '../server/index.jsx')
+    app: path.join(__dirname, '../server/index.jsx'),
   },
   output: {
     filename: 'server-entry.js',
     path: path.join(__dirname, '../../dist'),
     // publicPath: "/public",
-    libraryTarget: "commonjs2"
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
@@ -32,8 +32,8 @@ module.exports = {
           ],
           plugins: [].filter(Boolean),
         },
-      }
-    ]
+      },
+    ],
   },
-  plugins: []
-}
+  plugins: [],
+};

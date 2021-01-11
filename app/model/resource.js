@@ -11,7 +11,7 @@ module.exports = app => {
       autoIncrement: true,
     },
     name: STRING(30),
-    parent_id: INTEGER
+    parent_id: INTEGER,
   });
 
   // Resource.sync({ alter: true })

@@ -1,11 +1,11 @@
-const BaseController = require('./base')
+const BaseController = require('./base');
 
-class Controller extends BaseController{
-  constructor(...args){
+class Controller extends BaseController {
+  constructor(...args) {
     super(...args);
-    this.entity = 'roleResource'
+    this.entity = 'roleResource';
   }
 
 }
 
-module.exports = Controller
+module.exports = Controller;
