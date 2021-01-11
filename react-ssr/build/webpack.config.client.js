@@ -11,7 +11,7 @@ const config = {
   output: {
     filename: '[name].[hash].js',
     path: path.join(__dirname, '../../dist'),
-    publicPath: '/public/',
+    publicPath: '/dist/',
   },
   module: {
     rules: [
@@ -52,9 +52,9 @@ if (isDev) {
     overlay: {
       errors: true,
     },
-    publicPath: '/public/',
+    publicPath: '/dist/',
     historyApiFallback: {
-      index: '/public/index.html',
+      index: '/dist/index.html',
     },
   };
 }

@@ -31,7 +31,7 @@ serverCompiler.watch({}, (err, stats) => {
 });
 const getTemplate = () => {
   return new Promise((resolve, reject) => {
-    axios.get('http://localhost:8888/public/index.html').then(res => {
+    axios.get('http://localhost:8888/dist/index.html').then(res => {
       resolve(res.data);
     }).catch(reject);
   });

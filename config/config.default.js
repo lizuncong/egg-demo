@@ -22,7 +22,7 @@ module.exports = appInfo => {
   if (isDev) {
     console.log('isDev===0000', isDev);
     config.httpProxy = {
-      '/public': 'http://localhost:8888',
+      '/dist': 'http://localhost:8888',
     };
   }
   // add your middleware config here
